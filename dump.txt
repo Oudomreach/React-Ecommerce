@@ -1,0 +1,33 @@
+<div className='w-[1270px] h-auto mx-auto '>
+        <div className='bg-gray-200'>
+          <div className='flex flex-col col-span-6'>
+            <div className='flex justify-evenly items-center text-start'>
+              {/* Item Header */}
+                <p>Products</p>
+                <p>Title</p>
+                <p>Price</p>
+                <p>Quantity</p>
+                <p>total</p>
+                <p>Remove</p>
+            </div>
+            {/* Display Item */}
+            {
+              allProduct.map((item) => {
+                if(cartItem[item.id] > 0)
+                return (
+                  <>
+                    <div className='flex justify-evenly items-center text-start'>
+                      <img className='w-[50px]' src={item.image} alt="" />
+                      <p>{item.name}</p>
+                      <p>${item.new_price}</p>
+                      <button>{cartItem[item.id]}</button>
+                      <p>{item.new_price * cartItem[item.id] }</p>
+                      <img onClick={()=>{removeFromCart(item.id)}} src={removeIcon} alt="" />
+                    </div>
+                  </>
+                )
+              })
+            }
+          </div>
+        </div>
+      </div>

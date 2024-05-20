@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ShopContext } from '../context/ShopContext'
 
 const DisplayProducts = (props) => {
 
@@ -7,6 +8,8 @@ const DisplayProducts = (props) => {
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
     const [totalStars, setTotalStars] = useState(5)
+
+    const {addToCart} = useContext(ShopContext)
 
   return (
     <>
@@ -69,7 +72,7 @@ const DisplayProducts = (props) => {
                         <button className='p-2 px-4 w-full h-auto bg-gray-500 hover:bg-orange-600 text-white text-sm rounded-sm'>XL</button>
                         <button className='p-2 px-4 w-full h-auto bg-gray-500 hover:bg-orange-600 text-white text-sm rounded-sm'>XXL</button>
                     </div>
-                    <button className='bg-orange-600 text-center p-3 px-6 rounded-sm text-white my-4'>Add to Cart</button>
+                    <button onClick={()=>{addToCart(product.id)}} className='bg-orange-600 text-center p-3 px-6 rounded-sm text-white my-4 hover:bg-orange-400'>Add to Cart</button>
                 </div>
             </div>
         </div>
